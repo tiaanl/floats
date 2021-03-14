@@ -6,7 +6,7 @@
 namespace fl {
 
 struct Plane {
-  ca::Vec3 normal;
+  Vec3 normal;
   F32 distance;
 };
 

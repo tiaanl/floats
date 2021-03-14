@@ -23,6 +23,10 @@ struct Size {
   bool operator!=(const Size& right) const {
     return !(*this == right);
   }
+
+  I32 area() const {
+    return width * height;
+  }
 };
 
 inline std::ostream& operator<<(std::ostream& os, const Size& value) {

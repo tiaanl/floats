@@ -8,7 +8,7 @@ namespace fl {
 
 struct IntersectionResult {
   bool didIntersect;
-  ca::Vec3 position;
+  Vec3 position;
 };
 
 inline IntersectionResult intersection(const Plane& plane, const Ray& ray) {

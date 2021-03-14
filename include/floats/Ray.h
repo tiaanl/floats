@@ -6,8 +6,8 @@
 namespace fl {
 
 struct Ray {
-  ca::Vec3 origin;
-  ca::Vec3 direction;
+  Vec3 origin;
+  Vec3 direction;
 };
 
 }  // namespace fl

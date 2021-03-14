@@ -66,7 +66,7 @@ inline F32 arcTangent2(F32 y, F32 x) {
 }
 
 inline Angle arcTangent2Angle(F32 y, F32 x) {
-  return fl::radians(arcTangent2(y, x));
+  return radians(arcTangent2(y, x));
 }
 
 inline F32 round(F32 x) {
@@ -97,7 +97,7 @@ inline auto minimum(const T& x, const T& y) -> T {
 }
 
 template <>
-inline auto minimum<fl::Size>(const Size& x, const Size& y) -> Size {
+inline auto minimum<Size>(const Size& x, const Size& y) -> Size {
   return Size{minimum(x.width, y.width), minimum(x.height, y.height)};
 }
 

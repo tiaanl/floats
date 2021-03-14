@@ -1,6 +1,5 @@
-
-#ifndef CANVAS_UTILS_POS_H_
-#define CANVAS_UTILS_POS_H_
+#ifndef FLOATS_POS_H_
+#define FLOATS_POS_H_
 
 #include <ostream>
 
