@@ -15,6 +15,7 @@ set(HEADER_FILES
     include/floats/Plane.h
     include/floats/Pos.h
     include/floats/Quaternion.h
+    include/floats/Random.h
     include/floats/Ray.h
     include/floats/Rect.h
     include/floats/Size.h
