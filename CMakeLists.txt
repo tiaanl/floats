@@ -37,10 +37,7 @@ set(SOURCE_FILES
 nucleus_add_library(floats ${HEADER_FILES} ${SOURCE_FILES})
 target_link_libraries(floats PUBLIC nucleus)
 
-find_package(Catch2 CONFIG REQUIRED)
-
 set(TESTS_FILES
-    tests/Main.cpp
     tests/Mat4Tests.cpp
     tests/TransformTests.cpp
     tests/Vec2Tests.cpp
@@ -49,5 +46,4 @@ set(TESTS_FILES
     )
 
 nucleus_add_executable(floatsTests ${TESTS_FILES})
-target_link_libraries(floatsTests PRIVATE floats)
-target_link_libraries(floatsTests PRIVATE Catch2::Catch2)
+target_link_libraries(floatsTests PRIVATE floats testsMain)
