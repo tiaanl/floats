@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.17)
 
+if (TARGET floats)
+    return()
+endif ()
+
 project(floats)
 
 add_subdirectory(../nucleus nucleus)
