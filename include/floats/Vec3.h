@@ -1,5 +1,4 @@
-#ifndef FLOATS_VEC3_H_
-#define FLOATS_VEC3_H_
+#pragma once
 
 #include <ostream>
 
@@ -32,34 +31,34 @@ struct Vec3 {
     return Vec3{-x, -y, -z};
   }
 
-  Vec3& operator+=(const Vec3& right) {
-    x += right.x;
-    y += right.y;
-    z += right.z;
+  Vec3& operator+=(const Vec3& other) {
+    x += other.x;
+    y += other.y;
+    z += other.z;
 
     return *this;
   }
 
-  Vec3& operator-=(const Vec3& right) {
-    x -= right.x;
-    y -= right.y;
-    z -= right.z;
+  Vec3& operator-=(const Vec3& other) {
+    x -= other.x;
+    y -= other.y;
+    z -= other.z;
 
     return *this;
   }
 
-  Vec3& operator*=(F32 right) {
-    x *= right;
-    y *= right;
-    z *= right;
+  Vec3& operator*=(F32 other) {
+    x *= other;
+    y *= other;
+    z *= other;
 
     return *this;
   }
 
-  Vec3& operator/=(F32 right) {
-    x /= right;
-    y /= right;
-    z /= right;
+  Vec3& operator/=(F32 other) {
+    x /= other;
+    y /= other;
+    z /= other;
 
     return *this;
   }
@@ -112,5 +111,3 @@ inline std::ostream& operator<<(std::ostream& os, const Vec3& value) {
 }
 
 }  // namespace fl
-
-#endif  // FLOATS_VEC3_H_

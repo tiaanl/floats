@@ -34,6 +34,14 @@ inline std::ostream& operator<<(std::ostream& os, const Size& value) {
   return os;
 }
 
+inline F32 aspect_ratio(const Size& size) {
+  if (size.height == 0) {
+    return 1.0f;
+  }
+
+  return static_cast<F32>(size.width) / static_cast<F32>(size.height);
+}
+
 }  // namespace fl
 
 #endif  // CANVAS_UTILS_SIZE_H_
