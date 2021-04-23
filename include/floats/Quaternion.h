@@ -73,8 +73,6 @@ struct Quaternion {
   }
 
   Mat3 toRotationMatrix() const {
-    Mat3 Result = Mat3::identity;
-
     F32 qxx(v.x * v.x);
     F32 qyy(v.y * v.y);
     F32 qzz(v.z * v.z);
@@ -85,19 +83,21 @@ struct Quaternion {
     F32 qwy(w * v.y);
     F32 qwz(w * v.z);
 
-    Result.col[0].x = 1.0f - 2.0f * (qyy + qzz);
-    Result.col[0].y = 2.0f * (qxy + qwz);
-    Result.col[0].z = 2.0f * (qxz - qwy);
+    Mat3 result = Mat3::identity;
 
-    Result.col[1].x = 2.0f * (qxy - qwz);
-    Result.col[1].y = 1.0f - 2.0f * (qxx + qzz);
-    Result.col[1].z = 2.0f * (qyz + qwx);
+    result.col[0].x = 1.0f - 2.0f * (qyy + qzz);
+    result.col[0].y = 2.0f * (qxy + qwz);
+    result.col[0].z = 2.0f * (qxz - qwy);
 
-    Result.col[2].x = 2.0f * (qxz + qwy);
-    Result.col[2].y = 2.0f * (qyz - qwx);
-    Result.col[2].z = 1.0f - 2.0f * (qxx + qyy);
+    result.col[1].x = 2.0f * (qxy - qwz);
+    result.col[1].y = 1.0f - 2.0f * (qxx + qzz);
+    result.col[1].z = 2.0f * (qyz + qwx);
 
-    return Result;
+    result.col[2].x = 2.0f * (qxz + qwy);
+    result.col[2].y = 2.0f * (qyz - qwx);
+    result.col[2].z = 1.0f - 2.0f * (qxx + qyy);
+
+    return result;
   }
 };
 

@@ -35,6 +35,10 @@ public:
     return m_radians;
   }
 
+  friend Angle operator-(const Angle& other) {
+    return Angle::fromRadians(-other.m_radians);
+  }
+
   friend Angle operator+(Angle left, Angle right) {
     return Angle{left.m_radians + right.m_radians};
   }

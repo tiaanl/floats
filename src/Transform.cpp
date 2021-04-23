@@ -1,5 +1,5 @@
 
-#include "floats//Transform.h"
+#include "floats/Transform.h"
 
 namespace fl {
 
@@ -110,14 +110,40 @@ Mat4 perspectiveProjection(Angle fieldOfView, F32 aspectRatio, F32 near, F32 far
   return frustumMatrix(-width, width, -height, height, near, far);
 }
 
+Mat4 lookAt(const Vec3& eye, const Vec3& target, const Vec3& worldUp) {
+  auto f = normalize(target - eye);
+  auto s = normalize(crossProduct(f, worldUp));
+  auto u = crossProduct(s, f);
+
+  auto result = Mat4::identity;
+
+  result.col[0].x = s.x;
+  result.col[1].x = s.y;
+  result.col[2].x = s.z;
+
+  result.col[0].y = u.x;
+  result.col[1].y = u.y;
+  result.col[2].y = u.z;
+
+  result.col[0].z = -f.x;
+  result.col[1].z = -f.y;
+  result.col[2].z = -f.z;
+
+  result.col[3].x = -dotProduct(s, eye);
+  result.col[3].y = -dotProduct(u, eye);
+  result.col[3].z = dotProduct(f, eye);
+
+  return result;
+}
+
 Mat4 createViewMatrix(const Vec3& position, const Quaternion& orientation) {
   Mat3 rotation = orientation.toRotationMatrix();
 
   Mat3 transposedRotation = transpose(rotation);
-  Vec3 trans = -transposedRotation * position;
+  Vec3 translation = -transposedRotation * position;
 
   Mat4 viewMatrix = Mat4{transposedRotation};
-  viewMatrix.col[3] = Vec4{trans, 1.0f};
+  viewMatrix.col[3] = {translation, 1.0f};
 
   return viewMatrix;
 }
