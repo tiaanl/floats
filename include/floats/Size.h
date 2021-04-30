@@ -4,7 +4,7 @@
 
 #include <ostream>
 
-#include "nucleus/Types.h"
+#include "floats/Common.h"
 
 namespace fl {
 
@@ -40,6 +40,16 @@ inline F32 aspect_ratio(const Size& size) {
   }
 
   return static_cast<F32>(size.width) / static_cast<F32>(size.height);
+}
+
+template <>
+inline auto minimum<Size>(const Size& x, const Size& y) -> Size {
+  return Size{minimum(x.width, y.width), minimum(x.height, y.height)};
+}
+
+template <>
+inline auto maximum<Size>(const Size& x, const Size& y) -> Size {
+  return Size{maximum(x.width, y.width), maximum(x.height, y.height)};
 }
 
 }  // namespace fl

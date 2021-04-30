@@ -5,7 +5,6 @@
 #include <cmath>
 
 #include "floats/Angle.h"
-#include "floats/Size.h"
 #include "nucleus/Logging.h"
 #include "nucleus/Types.h"
 
@@ -85,20 +84,9 @@ inline bool nearZero(F32 x) {
   return absolute(x) < kNearZero;
 }
 
-inline F32 clamp(F32 value, F32 min, F32 max) {
-  DCHECK(min < max) << "min value should be less than max value";
-
-  return std::min(max, std::max(value, min));
-}
-
 template <typename T>
 inline auto minimum(const T& x, const T& y) -> T {
   return x < y ? x : y;
-}
-
-template <>
-inline auto minimum<Size>(const Size& x, const Size& y) -> Size {
-  return Size{minimum(x.width, y.width), minimum(x.height, y.height)};
 }
 
 template <typename T>
@@ -106,9 +94,10 @@ inline auto maximum(const T& x, const T& y) -> T {
   return x < y ? y : x;
 }
 
-template <>
-inline auto maximum<Size>(const Size& x, const Size& y) -> Size {
-  return Size{maximum(x.width, y.width), maximum(x.height, y.height)};
+inline F32 clamp(F32 value, F32 min, F32 max) {
+  DCHECK(min < max) << "min value should be less than max value";
+
+  return minimum(max, maximum(value, min));
 }
 
 }  // namespace fl
