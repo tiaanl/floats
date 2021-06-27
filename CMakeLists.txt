@@ -50,5 +50,5 @@ set(TESTS_FILES
     tests/vec4_tests.cpp
     )
 
-nucleus_add_executable(floatsTests ${TESTS_FILES})
-target_link_libraries(floatsTests PRIVATE floats tests_main)
+nucleus_add_executable(floats_tests ${TESTS_FILES})
+target_link_libraries(floats_tests PRIVATE floats tests_main)
