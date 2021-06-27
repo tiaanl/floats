@@ -88,6 +88,11 @@ Mat4 frustumMatrix(F32 left, F32 right, F32 bottom, F32 top, F32 near, F32 far) 
           }};
 }
 
+Mat4 frustumMatrix(const Frustum& frustum) {
+  return frustumMatrix(frustum.left, frustum.right, frustum.bottom, frustum.top, frustum.near,
+                       frustum.far);
+}
+
 Mat4 orthographicProjection(F32 left, F32 right, F32 top, F32 bottom, F32 near, F32 far) {
   auto col1 = Vec4{2.0f / (right - left), 0.0f, 0.0f, 0.0f};
 
