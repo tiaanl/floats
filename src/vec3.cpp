@@ -1,4 +1,4 @@
-#include "floats/Vec3.h"
+#include "floats/vec3.h"
 
 namespace fl {
 

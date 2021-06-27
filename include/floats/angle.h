@@ -1,7 +1,6 @@
-#ifndef FLOATS_ANGLE_H_
-#define FLOATS_ANGLE_H_
+#pragma once
 
-#include "nucleus/Types.h"
+#include "nucleus/types.h"
 
 namespace fl {
 
@@ -75,5 +74,3 @@ inline Angle radians(F32 radians) {
 }
 
 }  // namespace fl
-
-#endif  // FLOATS_ANGLE_H_

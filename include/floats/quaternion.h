@@ -1,9 +1,8 @@
-#ifndef FLOATS_QUATERNION_H_
-#define FLOATS_QUATERNION_H_
+#pragma once
 
-#include "floats/Angle.h"
-#include "floats/Mat3.h"
-#include "nucleus/Logging.h"
+#include "floats/angle.h"
+#include "floats/mat3.h"
+#include "nucleus/logging.h"
 
 namespace fl {
 
@@ -121,5 +120,3 @@ Quaternion inverse(const Quaternion& q);
 Quaternion slerp(const Quaternion& a, const Quaternion& b, F32 t);
 
 }  // namespace fl
-
-#endif  // FLOATS_QUATERNION_H_

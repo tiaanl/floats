@@ -1,8 +1,7 @@
-#ifndef FLOATS_MAT3_H_
-#define FLOATS_MAT3_H_
+#pragma once
 
-#include "floats/Vec3.h"
-#include "nucleus/Macros.h"
+#include "floats/vec3.h"
+#include "nucleus/macros.h"
 
 namespace fl {
 
@@ -38,5 +37,3 @@ inline Mat3 fromRotationAxis(const Vec3& NU_UNUSED(axis), F32 NU_UNUSED(rotation
 Mat3 transpose(const Mat3& m);
 
 }  // namespace fl
-
-#endif  // FLOATS_MAT3_H_

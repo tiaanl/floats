@@ -1,10 +1,8 @@
-
-#ifndef CANVAS_UTILS_SIZE_H_
-#define CANVAS_UTILS_SIZE_H_
+#pragma once
 
 #include <ostream>
 
-#include "floats/Common.h"
+#include "floats/common.h"
 
 namespace fl {
 
@@ -53,5 +51,3 @@ inline auto maximum<Size>(const Size& x, const Size& y) -> Size {
 }
 
 }  // namespace fl
-
-#endif  // CANVAS_UTILS_SIZE_H_

@@ -11,44 +11,44 @@ add_subdirectory(../nucleus nucleus)
 include(${nucleus_SOURCE_DIR}/cmake/Utils.cmake)
 
 set(HEADER_FILES
-    include/floats/Angle.h
-    include/floats/Common.h
-    include/floats/Intersection.h
-    include/floats/Mat3.h
-    include/floats/Mat4.h
-    include/floats/Plane.h
-    include/floats/Pos.h
-    include/floats/Quaternion.h
-    include/floats/Random.h
-    include/floats/Ray.h
-    include/floats/Rect.h
-    include/floats/Size.h
-    include/floats/Transform.h
-    include/floats/Vec2.h
-    include/floats/Vec3.h
-    include/floats/Vec4.h
+    include/floats/angle.h
+    include/floats/common.h
+    include/floats/intersection.h
+    include/floats/mat3.h
+    include/floats/mat4.h
+    include/floats/plane.h
+    include/floats/pos.h
+    include/floats/quaternion.h
+    include/floats/random.h
+    include/floats/ray.h
+    include/floats/rect.h
+    include/floats/size.h
+    include/floats/transform.h
+    include/floats/vec2.h
+    include/floats/vec3.h
+    include/floats/vec4.h
     )
 
 set(SOURCE_FILES
-    src/Angle.cpp
-    src/Mat3.cpp
-    src/Mat4.cpp
-    src/Quaternion.cpp
-    src/Transform.cpp
-    src/Vec2.cpp
-    src/Vec3.cpp
+    src/angle.cpp
+    src/mat3.cpp
+    src/mat4.cpp
+    src/quaternion.cpp
+    src/transform.cpp
+    src/vec2.cpp
+    src/vec3.cpp
     )
 
 nucleus_add_library(floats ${HEADER_FILES} ${SOURCE_FILES})
 target_link_libraries(floats PUBLIC nucleus)
 
 set(TESTS_FILES
-    tests/Mat4Tests.cpp
-    tests/TransformTests.cpp
-    tests/Vec2Tests.cpp
-    tests/Vec3Tests.cpp
-    tests/Vec4Tests.cpp
+    tests/mat4_tests.cpp
+    tests/transform_tests.cpp
+    tests/vec2_tests.cpp
+    tests/vec3_tests.cpp
+    tests/vec4_tests.cpp
     )
 
 nucleus_add_executable(floatsTests ${TESTS_FILES})
-target_link_libraries(floatsTests PRIVATE floats testsMain)
+target_link_libraries(floatsTests PRIVATE floats tests_main)

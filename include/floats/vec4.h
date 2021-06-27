@@ -1,11 +1,10 @@
-#ifndef FLOATS_VEC4_H_
-#define FLOATS_VEC4_H_
+#pragma once
 
 #include <ostream>
 
-#include "floats/Vec2.h"
-#include "floats/Vec3.h"
-#include "nucleus/Types.h"
+#include "floats/vec2.h"
+#include "floats/vec3.h"
+#include "nucleus/types.h"
 
 namespace fl {
 
@@ -86,5 +85,3 @@ inline std::ostream& operator<<(std::ostream& os, const Vec4& value) {
 }
 
 }  // namespace fl
-
-#endif  // FLOATS_VEC4_H_

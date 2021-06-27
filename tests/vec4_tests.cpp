@@ -1,6 +1,6 @@
 #include <catch2/catch.hpp>
 
-#include "floats/Vec4.h"
+#include "floats/vec4.h"
 
 namespace fl {
 

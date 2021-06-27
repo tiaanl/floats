@@ -1,8 +1,7 @@
-#ifndef FLOATS_INTERSECTION_H_
-#define FLOATS_INTERSECTION_H_
+#pragma once
 
-#include "floats/Plane.h"
-#include "floats/Ray.h"
+#include "floats/plane.h"
+#include "floats/ray.h"
 
 namespace fl {
 
@@ -22,5 +21,3 @@ inline IntersectionResult intersection(const Plane& plane, const Ray& ray) {
 }
 
 }  // namespace fl
-
-#endif  // FLOATS_INTERSECTION_H_

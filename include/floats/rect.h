@@ -1,8 +1,7 @@
-#ifndef CANVAS_UTILS_RECT_H_
-#define CANVAS_UTILS_RECT_H_
+#pragma once
 
-#include "floats/Pos.h"
-#include "floats/Size.h"
+#include "floats/pos.h"
+#include "floats/size.h"
 
 namespace fl {
 
@@ -24,5 +23,3 @@ struct Rect {
 };
 
 }  // namespace fl
-
-#endif  // CANVAS_UTILS_RECT_H_

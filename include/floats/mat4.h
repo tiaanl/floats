@@ -1,8 +1,7 @@
-#ifndef FLOATS_MAT4_H_
-#define FLOATS_MAT4_H_
+#pragma once
 
-#include "floats/Mat3.h"
-#include "floats/Vec4.h"
+#include "floats/mat3.h"
+#include "floats/vec4.h"
 
 namespace fl {
 
@@ -31,5 +30,3 @@ Mat4 transpose(const Mat4& m);
 Mat4 inverse(const Mat4& m);
 
 }  // namespace fl
-
-#endif  // FLOATS_MAT4_H_

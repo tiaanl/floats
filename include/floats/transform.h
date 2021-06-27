@@ -1,11 +1,10 @@
-#ifndef FLOATS_TRANSFORM_H_
-#define FLOATS_TRANSFORM_H_
+#pragma once
 
-#include "floats/Angle.h"
-#include "floats/Mat4.h"
-#include "floats/Quaternion.h"
-#include "floats/Rect.h"
+#include "floats/angle.h"
 #include "floats/frustum.h"
+#include "floats/mat4.h"
+#include "floats/quaternion.h"
+#include "floats/rect.h"
 
 namespace fl {
 
@@ -28,5 +27,3 @@ Mat4 createViewMatrix(const Vec3& position, const Quaternion& orientation);
 Mat4 createModelMatrix(const Mat4& translation, const Mat4& rotation, const Mat4& scale);
 
 }  // namespace fl
-
-#endif  // FLOATS_TRANSFORM_H_

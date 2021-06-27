@@ -1,9 +1,8 @@
-#ifndef FLOATS_POS_H_
-#define FLOATS_POS_H_
+#pragma once
 
 #include <ostream>
 
-#include "nucleus/Types.h"
+#include "nucleus/types.h"
 
 namespace fl {
 
@@ -65,5 +64,3 @@ inline std::ostream& operator<<(std::ostream& os, const fl::Pos& pos) {
   os << "(" << pos.x << ", " << pos.y << ")";
   return os;
 }
-
-#endif  // CANVAS_UTILS_POS_H_

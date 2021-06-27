@@ -2,9 +2,9 @@
 
 #include <ostream>
 
-#include "floats/Common.h"
-#include "floats/Vec2.h"
-#include "nucleus/Types.h"
+#include "floats/common.h"
+#include "floats/vec2.h"
+#include "nucleus/types.h"
 
 namespace fl {
 

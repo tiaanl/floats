@@ -1,12 +1,11 @@
-#ifndef FLOATS_COMMON_H_
-#define FLOATS_COMMON_H_
+#pragma once
 
 #include <algorithm>
 #include <cmath>
 
-#include "floats/Angle.h"
-#include "nucleus/Logging.h"
-#include "nucleus/Types.h"
+#include "floats/angle.h"
+#include "nucleus/logging.h"
+#include "nucleus/types.h"
 
 namespace fl {
 
@@ -101,5 +100,3 @@ inline F32 clamp(F32 value, F32 min, F32 max) {
 }
 
 }  // namespace fl
-
-#endif  // FLOATS_COMMON_H_
