@@ -1,13 +1,12 @@
-
 #include "floats/transform.h"
 
 namespace fl {
 
-Mat4 scaleMatrix(F32 scale) {
-  return scaleMatrix(Vec3{scale, scale, scale});
+Mat4 scale_matrix(F32 scale) {
+  return scale_matrix(Vec3{scale, scale, scale});
 }
 
-Mat4 scaleMatrix(const Vec3& scale) {
+Mat4 scale_matrix(const Vec3& scale) {
   return Mat4{
       Vec4{scale.x, 0.0f, 0.0f, 0.0f},
       Vec4{0.0f, scale.y, 0.0f, 0.0f},
@@ -16,36 +15,36 @@ Mat4 scaleMatrix(const Vec3& scale) {
   };
 }
 
-Mat4 translationMatrix(const Vec3& translate) {
+Mat4 translation_matrix(const Vec3& translate) {
   Mat4 result = Mat4::identity;
   result.col[3] = Vec4{translate, 1.0f};
   return result;
 }
 
-Mat4 rotationMatrix(const Vec3& axis, Angle angle) {
-  const auto normalizedAxis = normalize(axis);
+Mat4 rotation_matrix(const Vec3& axis, Angle angle) {
+  const auto normalized_axis = normalize(axis);
 
-  const F32 sinTheta = sine(angle);
-  const F32 cosTheta = cosine(angle);
-  const F32 cosValue = 1.0f - cosTheta;
+  const F32 sin_theta = sine(angle);
+  const F32 cos_theta = cosine(angle);
+  const F32 cos_value = 1.0f - cos_theta;
 
   return {
       {
-          (normalizedAxis.x * normalizedAxis.x * cosValue) + cosTheta,
-          (normalizedAxis.x * normalizedAxis.y * cosValue) + (normalizedAxis.z * sinTheta),
-          (normalizedAxis.x * normalizedAxis.z * cosValue) - (normalizedAxis.y * sinTheta),
+          (normalized_axis.x * normalized_axis.x * cos_value) + cos_theta,
+          (normalized_axis.x * normalized_axis.y * cos_value) + (normalized_axis.z * sin_theta),
+          (normalized_axis.x * normalized_axis.z * cos_value) - (normalized_axis.y * sin_theta),
           0.0f,
       },
       {
-          (normalizedAxis.y * normalizedAxis.x * cosValue) - (normalizedAxis.z * sinTheta),
-          (normalizedAxis.y * normalizedAxis.y * cosValue) + cosTheta,
-          (normalizedAxis.y * normalizedAxis.z * cosValue) + (normalizedAxis.x * sinTheta),
+          (normalized_axis.y * normalized_axis.x * cos_value) - (normalized_axis.z * sin_theta),
+          (normalized_axis.y * normalized_axis.y * cos_value) + cos_theta,
+          (normalized_axis.y * normalized_axis.z * cos_value) + (normalized_axis.x * sin_theta),
           0.0f,
       },
       {
-          (normalizedAxis.z * normalizedAxis.x * cosValue) + (normalizedAxis.y * sinTheta),
-          (normalizedAxis.z * normalizedAxis.y * cosValue) - (normalizedAxis.x * sinTheta),
-          (normalizedAxis.z * normalizedAxis.z * cosValue) + cosTheta,
+          (normalized_axis.z * normalized_axis.x * cos_value) + (normalized_axis.y * sin_theta),
+          (normalized_axis.z * normalized_axis.y * cos_value) - (normalized_axis.x * sin_theta),
+          (normalized_axis.z * normalized_axis.z * cos_value) + cos_theta,
           0.0f,
       },
       {
@@ -57,7 +56,7 @@ Mat4 rotationMatrix(const Vec3& axis, Angle angle) {
   };
 }
 
-Mat4 frustumMatrix(F32 left, F32 right, F32 bottom, F32 top, F32 near, F32 far) {
+Mat4 frustum_matrix(F32 left, F32 right, F32 bottom, F32 top, F32 near, F32 far) {
   F32 dx = right - left;
   F32 dy = top - bottom;
   F32 dz = far - near;
@@ -88,12 +87,12 @@ Mat4 frustumMatrix(F32 left, F32 right, F32 bottom, F32 top, F32 near, F32 far) 
           }};
 }
 
-Mat4 frustumMatrix(const Frustum& frustum) {
-  return frustumMatrix(frustum.left, frustum.right, frustum.bottom, frustum.top, frustum.near,
-                       frustum.far);
+Mat4 frustum_matrix(const Frustum& frustum) {
+  return frustum_matrix(frustum.left, frustum.right, frustum.bottom, frustum.top, frustum.near,
+                        frustum.far);
 }
 
-Mat4 orthographicProjection(F32 left, F32 right, F32 top, F32 bottom, F32 near, F32 far) {
+Mat4 orthographic_projection(F32 left, F32 right, F32 top, F32 bottom, F32 near, F32 far) {
   auto col1 = Vec4{2.0f / (right - left), 0.0f, 0.0f, 0.0f};
 
   auto col2 = Vec4{0.0f, 2.0f / (top - bottom), 0.0f, 0.0f};
@@ -106,18 +105,18 @@ Mat4 orthographicProjection(F32 left, F32 right, F32 top, F32 bottom, F32 near, 
   return Mat4{col1, col2, col3, col4};
 }
 
-Mat4 perspectiveProjection(Angle fieldOfView, F32 aspectRatio, F32 near, F32 far) {
-  F32 t = tangent(fieldOfView / 2.0f);
+Mat4 perspective_projection(Angle field_of_view, F32 aspect_ratio, F32 near, F32 far) {
+  F32 t = tangent(field_of_view / 2.0f);
 
   F32 height = near * t;
-  F32 width = height * aspectRatio;
+  F32 width = height * aspect_ratio;
 
-  return frustumMatrix(-width, width, -height, height, near, far);
+  return frustum_matrix(-width, width, -height, height, near, far);
 }
 
-Mat4 lookAt(const Vec3& eye, const Vec3& target, const Vec3& worldUp) {
+Mat4 look_at(const Vec3& eye, const Vec3& target, const Vec3& world_up) {
   auto f = normalize(target - eye);
-  auto s = normalize(crossProduct(f, worldUp));
+  auto s = normalize(crossProduct(f, world_up));
   auto u = crossProduct(s, f);
 
   auto result = Mat4::identity;
@@ -141,19 +140,19 @@ Mat4 lookAt(const Vec3& eye, const Vec3& target, const Vec3& worldUp) {
   return result;
 }
 
-Mat4 createViewMatrix(const Vec3& position, const Quaternion& orientation) {
+Mat4 create_view_matrix(const Vec3& position, const Quaternion& orientation) {
   Mat3 rotation = orientation.toRotationMatrix();
 
-  Mat3 transposedRotation = transpose(rotation);
-  Vec3 translation = -transposedRotation * position;
+  Mat3 transposed_rotation = transpose(rotation);
+  Vec3 translation = -transposed_rotation * position;
 
-  Mat4 viewMatrix = Mat4{transposedRotation};
-  viewMatrix.col[3] = {translation, 1.0f};
+  Mat4 view_matrix = Mat4{transposed_rotation};
+  view_matrix.col[3] = {translation, 1.0f};
 
-  return viewMatrix;
+  return view_matrix;
 }
 
-Mat4 createModelMatrix(const Mat4& translation, const Mat4& rotation, const Mat4& scale) {
+Mat4 create_model_matrix(const Mat4& translation, const Mat4& rotation, const Mat4& scale) {
   return translation * rotation * scale;
 }
 

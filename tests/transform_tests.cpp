@@ -5,7 +5,7 @@
 namespace fl {
 
 TEST_CASE("another transform test") {
-  Mat4 projection = perspectiveProjection(degrees(45.0f), 1.0f, 0.1f, 100.0f);
+  Mat4 projection = perspective_projection(degrees(45.0f), 1.0f, 0.1f, 100.0f);
 
   auto result1 = projection * Vec4{0.0f, 0.0f, 0.0f, 1.0f};
   CHECK(result1.x == 0.0f);
@@ -22,7 +22,7 @@ TEST_CASE("another transform test") {
 
 TEST_CASE("frustum matrix") {
   {
-    Mat4 m = frustumMatrix(-1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f);
+    Mat4 m = frustum_matrix(-1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f);
 
     auto result1 = m * Vec4{0.0f, 0.0f, 0.0f, 1.0f};
     CHECK(result1.x == 0.0f);
@@ -44,7 +44,7 @@ TEST_CASE("frustum matrix") {
   }
 
   {
-    Mat4 m = frustumMatrix(-20.0f, 30.0f, -20.0f, 30.0f, -20.0f, 30.0f);
+    Mat4 m = frustum_matrix(-20.0f, 30.0f, -20.0f, 30.0f, -20.0f, 30.0f);
 
     auto result1 = m * Vec4{0.0f, 0.0f, 0.0f, 0.0f};
     CHECK(result1.x == 0.0f);
