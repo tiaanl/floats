@@ -84,6 +84,10 @@ inline Vec2 lerp(const Vec2& a, const Vec2& b, F32 t) {
   return a + (b - a) * t;
 }
 
+inline F32 distance(const Vec2& a, const Vec2& b) {
+  return length(a - b);
+}
+
 inline std::ostream& operator<<(std::ostream& os, const Vec2& value) {
   os << "{" << value.x << ", " << value.y << "}";
   return os;
